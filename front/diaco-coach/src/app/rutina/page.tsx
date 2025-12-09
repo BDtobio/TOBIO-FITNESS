@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// app/rutina/page.tsx
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function RutinaForm() {
+  const router = useRouter();
+
   const [form, setForm] = useState({
     nombre: "",
     edad: "",
@@ -17,36 +19,48 @@ export default function RutinaForm() {
     equipamiento: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = () => {
-    const msg = encodeURIComponent(
-      `Hola Tobias! Quiero una rutina personalizada.\n\n` +
-        `👤 Nombre: ${form.nombre}\n` +
-        `🎯 Objetivo: ${form.objetivo}\n` +
-        `📅 Experiencia: ${form.experiencia}\n` +
-        `💪 Días disponibles: ${form.dias}\n` +
-        `⚖️ Peso: ${form.peso} kg\n` +
-        `📏 Altura: ${form.altura} cm\n` +
-        `🩺 Lesiones: ${form.lesiones}\n` +
-        `🏋 Equipamiento: ${form.equipamiento}\n\n` +
-        `Edad: ${form.edad}`
-    );
+    const diasNum = Number(form.dias);
+    let plan = "";
 
-    window.open(`https://wa.me/5493816437392?text=${msg}`, "_blank");
+    // 📌 Lógica para recomendar plan
+    if (form.experiencia === "Principiante" || diasNum <= 3) {
+      plan = "inicial";
+    } else if (
+      (form.experiencia === "Intermedio" && diasNum >= 3) ||
+      (form.objetivo === "Recomposición corporal" && diasNum >= 4)
+    ) {
+      plan = "progreso";
+    } else if (
+      form.experiencia === "Avanzado" ||
+      form.objetivo === "Rendimiento / fuerza" ||
+      diasNum >= 5
+    ) {
+      plan = "premium";
+    } else {
+      plan = "inicial";
+    }
+
+    // Guardamos la recomendación
+    localStorage.setItem("rutinaPlanRecomendado", plan);
+
+    // Redirigimos a la sección del plan
+    router.push(`/planes#${plan}`);
   };
 
   return (
     <main className="max-w-lg mx-auto px-4 py-10">
       <h1 className="text-2xl font-semibold mb-2">Formulario para rutina personalizada</h1>
-      <p className="text-neutral-600 mb-6 text-sm">
-        Completá estos datos y te armo una rutina adaptada a tu nivel, objetivo y horarios.
-      </p>
 
       <section className="space-y-4">
-        {/* FORM INPUTS */}
         {[
           ["nombre", "Nombre completo"],
           ["edad", "Edad"],
@@ -66,7 +80,7 @@ export default function RutinaForm() {
 
         {/* OBJETIVO */}
         <div className="flex flex-col">
-          <label className="text-sm text-neutral-700">Objetivo</label>
+          <label>Objetivo</label>
           <select
             name="objetivo"
             value={form.objetivo}
@@ -83,7 +97,7 @@ export default function RutinaForm() {
 
         {/* EXPERIENCIA */}
         <div className="flex flex-col">
-          <label className="text-sm text-neutral-700">Experiencia entrenando</label>
+          <label>Experiencia entrenando</label>
           <select
             name="experiencia"
             value={form.experiencia}
@@ -97,9 +111,9 @@ export default function RutinaForm() {
           </select>
         </div>
 
-        {/* DÍAS DISPONIBLES */}
+        {/* DÍAS */}
         <div className="flex flex-col">
-          <label className="text-sm text-neutral-700">Días disponibles por semana</label>
+          <label>Días disponibles por semana</label>
           <input
             name="dias"
             value={form.dias}
@@ -110,7 +124,7 @@ export default function RutinaForm() {
 
         {/* LESIONES */}
         <div className="flex flex-col">
-          <label className="text-sm text-neutral-700">Lesiones (opcional)</label>
+          <label>Lesiones (opcional)</label>
           <textarea
             name="lesiones"
             value={form.lesiones}
@@ -121,7 +135,7 @@ export default function RutinaForm() {
 
         {/* EQUIPAMIENTO */}
         <div className="flex flex-col">
-          <label className="text-sm text-neutral-700">Equipamiento disponible</label>
+          <label>Equipamiento disponible</label>
           <textarea
             name="equipamiento"
             value={form.equipamiento}
@@ -130,12 +144,12 @@ export default function RutinaForm() {
           />
         </div>
 
-        {/* BOTÓN ENVIAR */}
+        {/* BOTÓN */}
         <button
           onClick={handleSubmit}
           className="w-full bg-neutral-900 text-white rounded-full py-2.5 mt-3 hover:bg-black transition text-sm"
         >
-          Enviar por WhatsApp
+          Ver mi plan recomendado
         </button>
       </section>
     </main>
