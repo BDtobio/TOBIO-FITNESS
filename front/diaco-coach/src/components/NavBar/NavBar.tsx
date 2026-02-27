@@ -31,7 +31,7 @@ export default function Navbar() {
               hover:opacity-80 transition
             "
           >
-            <span className="font-bold">Diaco</span> Coach
+            <span className="font-bold">Tobio </span> Coach
           </a>
 
           {/* DESKTOP LINKS */}

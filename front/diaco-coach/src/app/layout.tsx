@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   title: "Tobio Coach | Entrenamiento Online Personalizado",
   description:
     "Planes de entrenamiento online personalizados por Tobías Diaco. Rutinas a medida, seguimiento por WhatsApp y distintos niveles de acompañamiento.",
+      icons: {
+    icon: "/logo.png",
+  },
+
 };
 
 export default function RootLayout({

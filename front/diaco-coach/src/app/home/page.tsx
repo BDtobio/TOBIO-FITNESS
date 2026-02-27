@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
 function Carousel() {
-  const images = ["/gym.png", "/gym.png", "/gym.png"];
+  const images = ["/img3.jpg", "/img11.jpg","/img4.jpg"];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function Carousel() {
   }, []);
 
  return (
-  <div className="relative h-[320px] sm:h-[300px] md:h-[500px]">
+  <div className="relative h-[320px] sm:h-[300px] md:h-[900px]">
     {/* IMÁGENES */}
     {images.map((src, i) => (
       <div
@@ -26,13 +26,13 @@ function Carousel() {
           i === index ? "opacity-100" : "opacity-0"
         }`}
       >
-        <Image
-          src={src}
-          alt={`Slide ${i + 1}`}
-          fill
-          className="object-cover"
-          priority={i === 0}
-        />
+    <Image
+  src={src}
+  alt={`Slide ${i + 1}`}
+  fill
+  className="object-cover object-top md:object-center"
+  priority={i === 0}
+/>
       </div>
     ))}
 
@@ -131,10 +131,7 @@ function Carousel() {
 </section>
 
 
-  <main className="max-w-5xl mx-auto px-4 py-8 md:py-14">
-    {/* HERO */}
-    ...
-  </main>
+
 </>
 
 
@@ -318,7 +315,7 @@ Sobre mí</h2>
       className="inline-flex items-center justify-center bg-neutral-900 text-white rounded-full px-6 py-3 text-sm
                  transition hover:bg-black hover:scale-[1.03] active:scale-[0.97]"
     >
-      Hablar con vos
+      Hablar con Tobio
     </a>
   </div>
 </section>
