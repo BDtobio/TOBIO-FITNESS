@@ -87,7 +87,10 @@ function Carousel() {
           <div className="flex flex-col sm:flex-row gap-3">
             <a
               href="#planes"
-              className="inline-flex items-center justify-center rounded-full w-full sm:w-auto px-5 py-2.5 text-sm font-medium bg-neutral-900 text-white hover:bg-black transition"
+            className="inline-flex items-center justify-center rounded-full w-full sm:w-auto px-5 py-2.5 text-sm font-medium
+bg-neutral-900 text-white hover:bg-black
+dark:bg-white dark:text-black dark:hover:bg-neutral-200
+transition"
             >
               Ver planes
             </a>
@@ -96,7 +99,10 @@ function Carousel() {
               href="https://wa.me/5493816437392?text=Hola%20Tobias!%20Quiero%20info%20sobre%20tus%20rutinas."
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full w-full sm:w-auto px-5 py-2.5 text-sm font-medium border bg-neutral-900 text-white hover:bg-black transition"
+              className="inline-flex items-center justify-center rounded-full w-full sm:w-auto px-5 py-2.5 text-sm font-medium border
+bg-neutral-900 text-white hover:bg-black
+dark:bg-white dark:text-black dark:hover:bg-neutral-200
+transition"
             >
               Hablar por WhatsApp
             </a>
@@ -164,7 +170,10 @@ Sobre mí</h2>
           <a
             href="https://wa.me/5493816437392?text=Hola%20Tobias!%20Quiero%20ver%20qué%20plan%20me%20recomendás."
             target="_blank"
-            className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium bg-neutral-900 text-white hover:bg-black transition w-full sm:w-auto"
+            className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium w-full sm:w-auto
+bg-neutral-900 text-white hover:bg-black
+dark:bg-white dark:text-black dark:hover:bg-neutral-200
+transition"
           >
             Hablar con Diaco Coach
           </a>
@@ -223,8 +232,10 @@ Sobre mí</h2>
         <a
           href="https://wa.me/5493816437392?text=Hola%20Tobias!%20Quiero%20una%20rutina%20prearmada."
           target="_blank"
-          className="block text-center bg-neutral-900 text-white rounded-full py-2.5 text-sm
-                     transition hover:bg-black hover:scale-[1.02] active:scale-[0.98]"
+          className="block text-center rounded-full py-2.5 text-sm
+bg-neutral-900 text-white hover:bg-black
+dark:bg-white dark:text-black dark:hover:bg-neutral-200
+transition hover:scale-[1.02] active:scale-[0.98]"
         >
           Comprar
         </a>
@@ -271,8 +282,10 @@ Sobre mí</h2>
         <a
           href="https://wa.me/5493816437392?text=Hola%20Tobias!%20Quiero%20un%20programa%20de%20entrenamiento."
           target="_blank"
-          className="block text-center bg-neutral-900 text-white rounded-full py-2.5 text-sm
-                     transition hover:bg-black hover:scale-[1.02] active:scale-[0.98]"
+          className="block text-center rounded-full py-2.5 text-sm
+bg-neutral-900 text-white hover:bg-black
+dark:bg-white dark:text-black dark:hover:bg-neutral-200
+transition hover:scale-[1.02] active:scale-[0.98]"
         >
           Comprar
         </a>
@@ -312,8 +325,10 @@ Sobre mí</h2>
     <a
       href="https://wa.me/5493816437392?text=Hola%20Tobias!%20Quiero%20un%20entrenamiento%20personalizado."
       target="_blank"
-      className="inline-flex items-center justify-center bg-neutral-900 text-white rounded-full px-6 py-3 text-sm
-                 transition hover:bg-black hover:scale-[1.03] active:scale-[0.97]"
+      className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm
+bg-neutral-900 text-white hover:bg-black
+dark:bg-white dark:text-black dark:hover:bg-neutral-200
+transition hover:scale-[1.03] active:scale-[0.97]"
     >
       Hablar con Tobio
     </a>

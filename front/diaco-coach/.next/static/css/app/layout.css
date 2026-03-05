@@ -919,12 +919,6 @@ video {
 .font-HighTrial {
   font-family: HighTrial;
 }
-.font-NatureBlack {
-  font-family: NatureBlack;
-}
-.font-NexaHeavy {
-  font-family: Nexa Heavy;
-}
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -983,17 +977,14 @@ video {
 .tracking-\[0\.16em\] {
   letter-spacing: 0.16em;
 }
+.tracking-\[0\.4em\] {
+  letter-spacing: 0.4em;
+}
 .tracking-tight {
   letter-spacing: -0.025em;
 }
 .tracking-wide {
   letter-spacing: 0.025em;
-}
-.tracking-widest {
-  letter-spacing: 0.1em;
-}
-.tracking-\[0\.4em\] {
-  letter-spacing: 0.4em;
 }
 .text-neutral-500 {
   --tw-text-opacity: 1;
@@ -1378,14 +1369,14 @@ body {
   border-color: rgb(245 245 245 / var(--tw-border-opacity, 1));
 }
 
-.dark\:hover\:bg-neutral-800:hover:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(38 38 38 / var(--tw-bg-opacity, 1));
-}
-
 .dark\:hover\:bg-neutral-200:hover:is(.dark *) {
   --tw-bg-opacity: 1;
   background-color: rgb(229 229 229 / var(--tw-bg-opacity, 1));
+}
+
+.dark\:hover\:bg-neutral-800:hover:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity, 1));
 }
 
 .dark\:hover\:text-white:hover:is(.dark *) {
@@ -1478,8 +1469,8 @@ body {
     line-height: 2.5rem;
   }
 
-  .md\:text-6xl {
-    font-size: 3.75rem;
+  .md\:text-9xl {
+    font-size: 8rem;
     line-height: 1;
   }
 
@@ -1487,14 +1478,7 @@ body {
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
-
-  .md\:text-8xl {
-    font-size: 6rem;
-    line-height: 1;
-  }
-
-  .md\:text-9xl {
-    font-size: 8rem;
-    line-height: 1;
-  }
 }
+
+
+
