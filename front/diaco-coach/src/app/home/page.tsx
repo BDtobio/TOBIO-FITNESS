@@ -40,10 +40,10 @@ function Carousel() {
     <div className="absolute inset-0 bg-black/40" />
 
     {/* TEXTO CENTRADO */}
-    <div className="absolute inset-0 flex items-center justify-center">
-      <h2 className="text-white text-3xl sm:text-4xl md:text-6xl font-bold tracking-wide">
-        TOBIAS DIACO
-      </h2>
+    <div className=" font-HighTrial absolute inset-0 flex items-center justify-center">
+     <h2 className="text-white text-3xl sm:text-4xl md:text-9xl font-bold tracking-[0.4em]">
+  TOBIAS DIACO
+</h2>
     </div>
   </div>
 );
@@ -96,7 +96,7 @@ function Carousel() {
               href="https://wa.me/5493816437392?text=Hola%20Tobias!%20Quiero%20info%20sobre%20tus%20rutinas."
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full w-full sm:w-auto px-5 py-2.5 text-sm font-medium border border-neutral-300 text-neutral-800 hover:bg-neutral-100 transition"
+              className="inline-flex items-center justify-center rounded-full w-full sm:w-auto px-5 py-2.5 text-sm font-medium border bg-neutral-900 text-white hover:bg-black transition"
             >
               Hablar por WhatsApp
             </a>

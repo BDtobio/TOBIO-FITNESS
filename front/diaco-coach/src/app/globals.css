@@ -25,3 +25,39 @@ body {
     text-wrap: balance;
   }
 }
+
+
+@font-face {
+  font-family: 'HighTrial';
+  src: url('/fonts/HighTrial.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NatureBlack';
+  src: url('/fonts/NatureBlack.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NatureMedium';
+  src: url('/fonts/NatureMedium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nexa Heavy';
+  src: url('/fonts/NexaHeavy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sufficit Regular';
+  src: url('/fonts/SufficitRegular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
