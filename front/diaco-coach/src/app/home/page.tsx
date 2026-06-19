@@ -224,7 +224,7 @@ transition"
 
        <ul className="text-sm text-neutral-700 dark:text-neutral-300 space-y-1.5 mb-5">
 
-          <li>• Objetivo definido</li>
+          <li>• Objetivo ganar musculo y aumentar fuerza</li>
           <li>• Duración 6–8 semanas</li>
           <li>• Formato PDF</li>
         </ul>
@@ -249,8 +249,8 @@ transition hover:scale-[1.02] active:scale-[0.98]"
   <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 mb-16">
     {[
       { nivel: "Principiante", precio: "$30.000" },
-      { nivel: "Intermedio", precio: "$35.000" },
-      { nivel: "Avanzado", precio: "$40.000" }
+      { nivel: "Intermedio", precio: "$30.000" },
+      { nivel: "Avanzado", precio: "$35.000" }
     ].map((p, i) => (
       <article
         key={i}
