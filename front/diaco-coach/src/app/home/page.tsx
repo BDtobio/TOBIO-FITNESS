@@ -40,8 +40,11 @@ function Carousel() {
     <div className="absolute inset-0 bg-black/40" />
 
     {/* TEXTO CENTRADO */}
-    <div className=" font-HighTrial absolute inset-0 flex items-center justify-center text-white">
-     <h2 className="text-white text-3xl sm:text-4xl md:text-9xl font-bold tracking-[0.4em]">
+    <div className="  absolute inset-0 flex items-center justify-center text-white">
+    <h2
+  style={{ fontFamily: "HighTrial" }}
+  className="text-white text-3xl sm:text-4xl md:text-9xl font-bold tracking-[0.4em]"
+>
   TOBIAS DIACO
 </h2>
     </div>
