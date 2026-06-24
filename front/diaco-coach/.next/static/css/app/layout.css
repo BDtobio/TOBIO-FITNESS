@@ -1153,6 +1153,27 @@ body {
   font-style: normal;
 }
 
+
+.font-hightrial {
+  font-family: 'HighTrial', sans-serif;
+}
+
+.font-nature-black {
+  font-family: 'NatureBlack', sans-serif;
+}
+
+.font-nature-medium {
+  font-family: 'NatureMedium', sans-serif;
+}
+
+.font-nexa-heavy {
+  font-family: 'Nexa Heavy', sans-serif;
+}
+
+.font-sufficit {
+  font-family: 'Sufficit Regular', sans-serif;
+}
+
 .hover\:-translate-y-1:hover {
   --tw-translate-y: -0.25rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1476,6 +1497,4 @@ body {
     line-height: 1.25rem;
   }
 }
-
-
 
