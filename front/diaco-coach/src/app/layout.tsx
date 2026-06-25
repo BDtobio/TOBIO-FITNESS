@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Planes de entrenamiento online personalizados por Tobías Diaco. Rutinas a medida, seguimiento por WhatsApp y distintos niveles de acompañamiento.",
       icons: {
-    icon: "/logo.png",
+    icon: "/logoTOBIO.png",
   },
 
 };

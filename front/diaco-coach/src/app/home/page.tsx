@@ -3,51 +3,75 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import { AnimatePresence, motion } from "framer-motion";
+
 export default function Home() {
 function Carousel() {
-  const images = ["/img3.jpg", "/img11.jpg","/img4.jpg"];
-  const [index, setIndex] = useState(0);
+  const [showLogo, setShowLogo] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(
-      () => setIndex((prev) => (prev + 1) % images.length),
-      4000
-    );
+    const interval = setInterval(() => {
+      setShowLogo((prev) => !prev);
+    }, 4000);
+
     return () => clearInterval(interval);
   }, []);
 
- return (
-  <div className="relative h-[320px] sm:h-[300px] md:h-[900px]">
-    {/* IMÁGENES */}
-    {images.map((src, i) => (
-      <div
-        key={i}
-        className={`absolute inset-0 transition-opacity duration-700 ${
-          i === index ? "opacity-100" : "opacity-0"
-        }`}
+  return (
+    <div className="relative h-[320px] sm:h-[300px] md:h-[900px] overflow-hidden">
+
+      {/* VIDEO BACKGROUND */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        autoPlay
+        muted
+        loop
+        playsInline
       >
-    <Image
-  src={src}
-  alt={`Slide ${i + 1}`}
-  fill
-  className="object-cover object-top md:object-center"
-  priority={i === 0}
-/>
+        <source src="/HomeVideo.mp4" type="video/mp4" />
+      </video>
+
+      {/* OVERLAY OSCURO */}
+      <div className="absolute inset-0 bg-black/30" />
+
+      {/* TEXTO / LOGO CENTRADO */}
+      <div className="absolute inset-0 flex items-center justify-center text-white">
+        <AnimatePresence mode="wait">
+          {showLogo ? (
+            <motion.div
+              key="logo"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="flex items-center justify-center"
+            >
+              <Image
+                src="/logoTOBIO.png"
+                alt="Logo Tobias Diaco"
+                width={300}
+                height={300}
+                className="object-contain w-[140px] sm:w-[180px] md:w-[300px] h-auto mx-auto"
+                priority
+              />
+            </motion.div>
+          ) : (
+            <motion.h2
+              key="text"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="font-HighTrial text-white text-3xl sm:text-4xl md:text-9xl tracking-[0.4em] text-center"
+            >
+              TOBIAS DIACO
+            </motion.h2>
+          )}
+        </AnimatePresence>
       </div>
-    ))}
 
-    {/* OVERLAY OSCURO (opcional pero recomendado) */}
-    <div className="absolute inset-0 bg-black/40" />
-
-    {/* TEXTO CENTRADO */}
-    <div className="  absolute inset-0 flex items-center justify-center text-white">
-  <h2 className="font-HighTrial text-white text-3xl sm:text-4xl md:text-9xl tracking-[0.4em]">
-  TOBIAS DIACO
-</h2>
     </div>
-  </div>
-);
-
+  );
 }
 
   return (
@@ -68,8 +92,7 @@ function Carousel() {
             Tobio Diaco Coach · Entrenamiento online
           </p>
 
-        <h1 className="text-2xl md:text-4xl font-semibold leading-tight mb-2
-  text-neutral-900 dark:text-neutral-100">
+      <h1 className="text-2xl md:text-4xl font-semibold leading-tight mb-2 text-neutral-900 dark:text-neutral-100 max-w-xl">
 
             Entrená con un plan diseñado para{" "}
             <span className="underline underline-offset-4 decoration-2">
@@ -78,7 +101,7 @@ function Carousel() {
             .
           </h1>
 
-         <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xl mb-5 leading-relaxed">
+        <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-md mb-5 leading-relaxed">
 
             Basta de rutinas genéricas. Empezá a entrenar con un plan creado para vos, tu nivel
             y tu tiempo disponible.
@@ -179,10 +202,18 @@ transition"
           </a>
         </div>
       </section>{/* PLANES */}
-<section id="planes" className="mb-20">
+<motion.section
+  id="planes"
+  className="mb-20"
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+>
   <h2 className="text-lg md:text-2xl font-semibold mb-1">
     Planes de entrenamiento
   </h2>
+
   <p className="text-[13px] md:text-sm text-neutral-600 max-w-xl mb-8 leading-relaxed">
     Elegí según tu nivel y objetivo. Todos son de pago único.
   </p>
@@ -191,39 +222,46 @@ transition"
   <h3 className="text-base font-semibold mb-4">Rutinas prearmadas</h3>
 
   <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 mb-12">
-    {[
+    {[  
       { nivel: "Principiante", precio: "$12.000", desc: "Ideal para empezar desde cero." },
       { nivel: "Intermedio", precio: "$15.000", desc: "Para quienes ya entrenan." },
       { nivel: "Avanzado", precio: "$18.000", desc: "Mayor volumen e intensidad." }
     ].map((r, i) => (
-      <article
+      <motion.article
         key={i}
-         className="group
-    border border-neutral-200 dark:border-neutral-800
-    rounded-2xl p-4
-    bg-white dark:bg-neutral-900
-    shadow-sm
-    transition-all duration-300 ease-out
-    hover:shadow-xl hover:-translate-y-1
-    hover:border-neutral-900 dark:hover:border-neutral-100">
-      <span className="text-[11px] px-2 py-1 rounded-full
-  bg-neutral-100 dark:bg-neutral-800
-  text-neutral-600 dark:text-neutral-300 mb-2 w-fit
-  transition group-hover:bg-neutral-900 group-hover:text-white">
-
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.4, delay: i * 0.1 }}
+        className="group
+        border border-neutral-200 dark:border-neutral-800
+        rounded-2xl p-4
+        bg-white dark:bg-neutral-900
+        shadow-sm
+        transition-all duration-300 ease-out
+        hover:shadow-xl hover:-translate-y-1
+        hover:border-neutral-900 dark:hover:border-neutral-100"
+      >
+        <span className="text-[11px] px-2 py-1 rounded-full
+          bg-neutral-100 dark:bg-neutral-800
+          text-neutral-600 dark:text-neutral-300 mb-2 w-fit
+          transition group-hover:bg-neutral-900 group-hover:text-white">
           🧩 Rutina
         </span>
 
-        <h4 className="text-base font-semibold mb-1
-  text-neutral-900 dark:text-neutral-100">
-{r.nivel}</h4>
+        <h4 className="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">
+          {r.nivel}
+        </h4>
+
         <p className="text-sm text-neutral-600 dark:text-neutral-300 mb-4">
-{r.precio}</p>
+          {r.precio}
+        </p>
 
-        <p className="text-sm text-neutral-600 mb-4">{r.desc}</p>
+        <p className="text-sm text-neutral-600 mb-4">
+          {r.desc}
+        </p>
 
-       <ul className="text-sm text-neutral-700 dark:text-neutral-300 space-y-1.5 mb-5">
-
+        <ul className="text-sm text-neutral-700 dark:text-neutral-300 space-y-1.5 mb-5">
           <li>• Objetivo ganar musculo y aumentar fuerza</li>
           <li>• Duración 6–8 semanas</li>
           <li>• Formato PDF</li>
@@ -233,13 +271,13 @@ transition"
           href="https://wa.me/5493816437392?text=Hola%20Tobias!%20Quiero%20una%20rutina%20prearmada."
           target="_blank"
           className="block text-center rounded-full py-2.5 text-sm
-bg-neutral-900 text-white hover:bg-black
-dark:bg-white dark:text-black dark:hover:bg-neutral-200
-transition hover:scale-[1.02] active:scale-[0.98]"
+          bg-neutral-900 text-white hover:bg-black
+          dark:bg-white dark:text-black dark:hover:bg-neutral-200
+          transition hover:scale-[1.02] active:scale-[0.98]"
         >
           Comprar
         </a>
-      </article>
+      </motion.article>
     ))}
   </div>
 
@@ -247,32 +285,37 @@ transition hover:scale-[1.02] active:scale-[0.98]"
   <h3 className="text-base font-semibold mb-4">Programas de entrenamiento</h3>
 
   <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 mb-16">
-    {[
+    {[  
       { nivel: "Principiante", precio: "$30.000" },
       { nivel: "Intermedio", precio: "$30.000" },
       { nivel: "Avanzado", precio: "$35.000" }
     ].map((p, i) => (
-      <article
+      <motion.article
         key={i}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.4, delay: i * 0.1 }}
         className="group
-    border-2 border-neutral-900 dark:border-neutral-100
-    rounded-2xl p-4
-    bg-white dark:bg-neutral-900
-    shadow-md
-    transition-all duration-300 ease-out
-    hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02]">
+        border-2 border-neutral-900 dark:border-neutral-100
+        rounded-2xl p-4
+        bg-white dark:bg-neutral-900
+        shadow-md
+        transition-all duration-300 ease-out
+        hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02]"
+      >
         <span className="text-[11px] px-2 py-1 rounded-full bg-neutral-900 text-white mb-2 w-fit
-                         transition group-hover:scale-105">
+          transition group-hover:scale-105">
           ⭐ Programa
         </span>
 
-        <h4 className="text-base font-semibold mb-1
-  text-neutral-900 dark:text-neutral-100">
-{p.nivel}</h4>
+        <h4 className="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">
+          {p.nivel}
+        </h4>
+
         <p className="text-lg font-bold mb-2">{p.precio}</p>
 
-       <ul className="text-sm text-neutral-700 dark:text-neutral-300 space-y-1.5 mb-6">
-
+        <ul className="text-sm text-neutral-700 dark:text-neutral-300 space-y-1.5 mb-6">
           <li>• Periodización</li>
           <li>• Progresión de cargas</li>
           <li>• Volumen e intensidad planificados</li>
@@ -283,28 +326,32 @@ transition hover:scale-[1.02] active:scale-[0.98]"
           href="https://wa.me/5493816437392?text=Hola%20Tobias!%20Quiero%20un%20programa%20de%20entrenamiento."
           target="_blank"
           className="block text-center rounded-full py-2.5 text-sm
-bg-neutral-900 text-white hover:bg-black
-dark:bg-white dark:text-black dark:hover:bg-neutral-200
-transition hover:scale-[1.02] active:scale-[0.98]"
+          bg-neutral-900 text-white hover:bg-black
+          dark:bg-white dark:text-black dark:hover:bg-neutral-200
+          transition hover:scale-[1.02] active:scale-[0.98]"
         >
           Comprar
         </a>
-      </article>
+      </motion.article>
     ))}
   </div>
 
   {/* ================= PERSONALIZADO PREMIUM ================= */}
- <div
-  className="group
-  border border-yellow-400
-  bg-gradient-to-br
-  from-yellow-50 to-white
-  dark:from-yellow-900/20 dark:to-neutral-900
-  rounded-3xl p-6 max-w-3xl mx-auto text-center
-  shadow-lg transition-all duration-300
-  hover:shadow-2xl hover:-translate-y-2
-  hover:ring-2 hover:ring-yellow-300"
->
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.5 }}
+    className="group
+    border border-yellow-400
+    bg-gradient-to-br
+    from-yellow-50 to-white
+    dark:from-yellow-900/20 dark:to-neutral-900
+    rounded-3xl p-6 max-w-3xl mx-auto text-center
+    shadow-lg transition-all duration-300
+    hover:shadow-2xl hover:-translate-y-2
+    hover:ring-2 hover:ring-yellow-300"
+  >
     <span className="inline-block text-[11px] px-3 py-1 rounded-full bg-yellow-200 text-yellow-800 mb-3">
       🔥 Servicio premium
     </span>
@@ -326,14 +373,14 @@ transition hover:scale-[1.02] active:scale-[0.98]"
       href="https://wa.me/5493816437392?text=Hola%20Tobias!%20Quiero%20un%20entrenamiento%20personalizado."
       target="_blank"
       className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm
-bg-neutral-900 text-white hover:bg-black
-dark:bg-white dark:text-black dark:hover:bg-neutral-200
-transition hover:scale-[1.03] active:scale-[0.97]"
+      bg-neutral-900 text-white hover:bg-black
+      dark:bg-white dark:text-black dark:hover:bg-neutral-200
+      transition hover:scale-[1.03] active:scale-[0.97]"
     >
       Hablar con Tobio
     </a>
-  </div>
-</section>
+  </motion.div>
+</motion.section>
 
 
 
