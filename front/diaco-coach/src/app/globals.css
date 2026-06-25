@@ -27,58 +27,37 @@ body {
 }
 
 
+
 @font-face {
-  font-family: 'HighTrial';
+  font-family: HighTrial;
   src: url('/fonts/HighTrial.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
+  
 
 @font-face {
-  font-family: 'NatureBlack';
-  src: url('/fonts/NatureBlack.ttf') format('truetype');
+  font-family: 'Pervitina';
+  src: url('/fonts/Pervitina.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'NatureMedium';
-  src: url('/fonts/NatureMedium.ttf') format('truetype');
+  font-family: Rockstar;
+  src: url('/fonts/Rockstar.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Nexa Heavy';
-  src: url('/fonts/NexaHeavy.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+.font-HighmanTrial {
+  font-family: HighmanTrial, sans-serif;
 }
 
-@font-face {
-  font-family: 'Sufficit Regular';
-  src: url('/fonts/SufficitRegular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+.font-Pervitina {
+  font-family: 'Pervitina', sans-serif;
 }
 
-
-.font-hightrial {
-  font-family: 'HighTrial', sans-serif;
-}
-
-.font-nature-black {
-  font-family: 'NatureBlack', sans-serif;
-}
-
-.font-nature-medium {
-  font-family: 'NatureMedium', sans-serif;
-}
-
-.font-nexa-heavy {
-  font-family: 'Nexa Heavy', sans-serif;
-}
-
-.font-sufficit {
-  font-family: 'Sufficit Regular', sans-serif;
+.font-Rockstar {
+  font-family: 'Rockstar', sans-serif;
 }

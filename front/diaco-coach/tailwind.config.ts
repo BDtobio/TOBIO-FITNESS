@@ -12,11 +12,11 @@ const config: Config = {
     extend: {
       fontFamily: {
         HighTrial: ["HighTrial"],
-        NatureBlack: ["NatureBlack"],
-       NatureMedium: ["NatureMedium"],
-        NexaHeavy: ["Nexa Heavy"],
-        SufficitRegular: ["Sufficit Regular"],
-        
+
+        Rockstar: ["Rockstar"],
+      Pervitina: ["Pervitina"],
+
+       
       },
 
       colors: {
