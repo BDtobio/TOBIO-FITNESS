@@ -47,10 +47,10 @@ function Carousel() {
               className="flex items-center justify-center"
             >
               <Image
-                src="/logoTOBIO.png"
+                src="/logoTOBIO2.png"
                 alt="Logo Tobias Diaco"
-                width={300}
-                height={300}
+                width={400}
+                height={400}
                 className="object-contain w-[140px] sm:w-[180px] md:w-[300px] h-auto mx-auto"
                 priority
               />
