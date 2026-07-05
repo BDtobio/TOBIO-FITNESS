@@ -26,12 +26,12 @@ export default function Navbar() {
           <a
             href="/home"
             className="
-              text-lg font-semibold tracking-tight
+              text-2xl font-semibold tracking-tight
               text-neutral-900 dark:text-neutral-100
               hover:opacity-80 transition
             "
           >
-            <span className="font-bold">Tobio </span> Coach
+            <span className="font-HighTrial">TOBIO COACH</span> 
           </a>
 
           {/* DESKTOP LINKS */}

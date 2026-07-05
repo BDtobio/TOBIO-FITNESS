@@ -34,41 +34,51 @@ function Carousel() {
       {/* OVERLAY OSCURO */}
       <div className="absolute inset-0 bg-black/30" />
 
-      {/* TEXTO / LOGO CENTRADO */}
-      <div className="absolute inset-0 flex items-center justify-center text-white">
-        <AnimatePresence mode="wait">
-          {showLogo ? (
-            <motion.div
-              key="logo"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="flex items-center justify-center"
-            >
-              <Image
-                src="/logoTOBIO2.png"
-                alt="Logo Tobias Diaco"
-                width={400}
-                height={400}
-                className="object-contain w-[140px] sm:w-[180px] md:w-[300px] h-auto mx-auto"
-                priority
-              />
-            </motion.div>
-          ) : (
-            <motion.h2
-              key="text"
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="font-HighTrial text-white text-3xl sm:text-4xl md:text-9xl tracking-[0.4em] text-center"
-            >
-              TOBIAS DIACO
-            </motion.h2>
-          )}
-        </AnimatePresence>
-      </div>
+ {/* TEXTO / LOGO */}
+<div className="absolute inset-0 flex items-center justify-center text-white">
+  <AnimatePresence mode="wait">
+    {showLogo ? (
+      <motion.div
+        key="logo"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+      >
+        <Image
+          src="/logoTOBIO2.png"
+          alt="Logo Tobias Diaco"
+          width={400}
+          height={400}
+          className="object-contain w-[140px] sm:w-[180px] md:w-[300px] h-auto"
+        />
+      </motion.div>
+    ) : (
+      <motion.h2
+        key="text"
+        initial={{ opacity: 0, scale: 1.05 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 1.05 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        className="font-HighTrial text-white text-3xl sm:text-4xl md:text-9xl tracking-[0.4em] text-center"
+      >
+        TOBIAS DIACO
+      </motion.h2>
+    )}
+  </AnimatePresence>
+</div>
+
+{/* BOTÓN FIJO */}
+<div className="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-20">
+  <a
+    href="#planes"
+    className="px-7 py-3 rounded-full border border-white bg-white/10 backdrop-blur-md
+               text-white font-medium hover:bg-white hover:text-black
+               transition-all duration-300"
+  >
+    Descubrir planes ↓
+  </a>
+</div>
 
     </div>
   );
@@ -87,12 +97,12 @@ function Carousel() {
   rounded-full px-2.5 py-1
   bg-neutral-50 dark:bg-neutral-900
   text-neutral-500 dark:text-neutral-400
-  mb-3">
+  mb-3 ">
 
             Tobio Diaco Coach · Entrenamiento online
           </p>
 
-      <h1 className="text-2xl md:text-4xl font-semibold leading-tight mb-2 text-neutral-900 dark:text-neutral-100 max-w-xl">
+      <h1 className="text-2xl md:text-4xl font-HighTrial leading-tight mb-2 text-neutral-900 dark:text-neutral-100 max-w-xl">
 
             Entrená con un plan diseñado para{" "}
             <span className="underline underline-offset-4 decoration-2">
@@ -166,9 +176,9 @@ transition"
 
       {/* SOBRE MÍ */}
       <section id="sobre-mi" className="mb-14">
-       <h2 className="text-lg md:text-2xl font-semibold mb-2
+       <h2 className="text-2xl md:text-3xl font-HighTrial mb-2
   text-neutral-900 dark:text-neutral-100">
-Sobre mí</h2>
+SOBRE MÍ</h2>
        <div className="mt-3 max-w-2xl space-y-3
   text-[13px] md:text-sm
   text-neutral-700 dark:text-neutral-300
@@ -201,192 +211,113 @@ transition"
             Hablar con Diaco Coach
           </a>
         </div>
-      </section>{/* PLANES */}
+      </section>
+    {/* ================= PLANES ================= */}
 <motion.section
   id="planes"
   className="mb-20"
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, amount: 0.2 }}
-  transition={{ duration: 0.6, ease: "easeOut" }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
 >
-  <h2 className="text-lg md:text-2xl font-semibold mb-1">
-    Planes de entrenamiento
+  <h2 className="text-3xl md:text-4xl font-HighTrial text-center mb-3">
+    ELEGÍ TU PLAN
   </h2>
 
-  <p className="text-[13px] md:text-sm text-neutral-600 max-w-xl mb-8 leading-relaxed">
-    Elegí según tu nivel y objetivo. Todos son de pago único.
+  <p className="text-center text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto mb-12">
+    No todos necesitan lo mismo. Elegí la opción que mejor se adapte a tu objetivo.
   </p>
 
-  {/* ================= RUTINAS PREARMADAS ================= */}
-  <h3 className="text-base font-semibold mb-4">Rutinas prearmadas</h3>
+  {/* ================= OPCIONES ================= */}
 
-  <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 mb-12">
-    {[  
-      { nivel: "Principiante", precio: "$12.000", desc: "Ideal para empezar desde cero." },
-      { nivel: "Intermedio", precio: "$15.000", desc: "Para quienes ya entrenan." },
-      { nivel: "Avanzado", precio: "$18.000", desc: "Mayor volumen e intensidad." }
-    ].map((r, i) => (
-      <motion.article
-        key={i}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.4, delay: i * 0.1 }}
-        className="group
-        border border-neutral-200 dark:border-neutral-800
-        rounded-2xl p-4
-        bg-white dark:bg-neutral-900
-        shadow-sm
-        transition-all duration-300 ease-out
-        hover:shadow-xl hover:-translate-y-1
-        hover:border-neutral-900 dark:hover:border-neutral-100"
-      >
-        <span className="text-[11px] px-2 py-1 rounded-full
-          bg-neutral-100 dark:bg-neutral-800
-          text-neutral-600 dark:text-neutral-300 mb-2 w-fit
-          transition group-hover:bg-neutral-900 group-hover:text-white">
-          🧩 Rutina
-        </span>
+  <div className="grid md:grid-cols-2 gap-8">
 
-        <h4 className="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">
-          {r.nivel}
-        </h4>
-
-        <p className="text-sm text-neutral-600 dark:text-neutral-300 mb-4">
-          {r.precio}
-        </p>
-
-        <p className="text-sm text-neutral-600 mb-4">
-          {r.desc}
-        </p>
-
-        <ul className="text-sm text-neutral-700 dark:text-neutral-300 space-y-1.5 mb-5">
-          <li>• Objetivo ganar musculo y aumentar fuerza</li>
-          <li>• Duración 6–8 semanas</li>
-          <li>• Formato PDF</li>
-        </ul>
-
-        <a
-          href="https://wa.me/5493816437392?text=Hola%20Tobias!%20Quiero%20una%20rutina%20prearmada."
-          target="_blank"
-          className="block text-center rounded-full py-2.5 text-sm
-          bg-neutral-900 text-white hover:bg-black
-          dark:bg-white dark:text-black dark:hover:bg-neutral-200
-          transition hover:scale-[1.02] active:scale-[0.98]"
-        >
-          Comprar
-        </a>
-      </motion.article>
-    ))}
-  </div>
-
-  {/* ================= PROGRAMAS ================= */}
-  <h3 className="text-base font-semibold mb-4">Programas de entrenamiento</h3>
-
-  <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 mb-16">
-    {[  
-      { nivel: "Principiante", precio: "$30.000" },
-      { nivel: "Intermedio", precio: "$30.000" },
-      { nivel: "Avanzado", precio: "$35.000" }
-    ].map((p, i) => (
-      <motion.article
-        key={i}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.4, delay: i * 0.1 }}
-        className="group
-        border-2 border-neutral-900 dark:border-neutral-100
-        rounded-2xl p-4
-        bg-white dark:bg-neutral-900
-        shadow-md
-        transition-all duration-300 ease-out
-        hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02]"
-      >
-        <span className="text-[11px] px-2 py-1 rounded-full bg-neutral-900 text-white mb-2 w-fit
-          transition group-hover:scale-105">
-          ⭐ Programa
-        </span>
-
-        <h4 className="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">
-          {p.nivel}
-        </h4>
-
-        <p className="text-lg font-bold mb-2">{p.precio}</p>
-
-        <ul className="text-sm text-neutral-700 dark:text-neutral-300 space-y-1.5 mb-6">
-          <li>• Periodización</li>
-          <li>• Progresión de cargas</li>
-          <li>• Volumen e intensidad planificados</li>
-          <li>• Gimnasio o casa</li>
-        </ul>
-
-        <a
-          href="https://wa.me/5493816437392?text=Hola%20Tobias!%20Quiero%20un%20programa%20de%20entrenamiento."
-          target="_blank"
-          className="block text-center rounded-full py-2.5 text-sm
-          bg-neutral-900 text-white hover:bg-black
-          dark:bg-white dark:text-black dark:hover:bg-neutral-200
-          transition hover:scale-[1.02] active:scale-[0.98]"
-        >
-          Comprar
-        </a>
-      </motion.article>
-    ))}
-  </div>
-
-  {/* ================= PERSONALIZADO PREMIUM ================= */}
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{ duration: 0.5 }}
-    className="group
-    border border-yellow-400
-    bg-gradient-to-br
-    from-yellow-50 to-white
-    dark:from-yellow-900/20 dark:to-neutral-900
-    rounded-3xl p-6 max-w-3xl mx-auto text-center
-    shadow-lg transition-all duration-300
-    hover:shadow-2xl hover:-translate-y-2
-    hover:ring-2 hover:ring-yellow-300"
-  >
-    <span className="inline-block text-[11px] px-3 py-1 rounded-full bg-yellow-200 text-yellow-800 mb-3">
-      🔥 Servicio premium
-    </span>
-
-    <h3 className="text-lg font-semibold mb-2">
-      Entrenamiento 100% personalizado
-    </h3>
-
-    <p className="text-sm text-neutral-700 mb-4 max-w-xl mx-auto">
-      Plan creado desde cero según tu cuerpo, objetivos, tiempos y experiencia.
-      Seguimiento real y ajustes según progreso.
-    </p>
-
-    <p className="text-2xl font-bold mb-5 transition group-hover:scale-110">
-      $50.000
-    </p>
-
-    <a
-      href="https://wa.me/5493816437392?text=Hola%20Tobias!%20Quiero%20un%20entrenamiento%20personalizado."
-      target="_blank"
-      className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm
-      bg-neutral-900 text-white hover:bg-black
-      dark:bg-white dark:text-black dark:hover:bg-neutral-200
-      transition hover:scale-[1.03] active:scale-[0.97]"
+    {/* RUTINAS */}
+    <motion.div
+      whileHover={{ y: -8 }}
+      className="rounded-3xl border border-neutral-200 dark:border-neutral-800 p-8 shadow-sm hover:shadow-xl transition"
     >
-      Hablar con Tobio
-    </a>
-  </motion.div>
+      <span className="inline-block mb-3 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 px-3 py-1">
+        📄 Rutinas
+      </span>
+
+      <h3 className="font-HighTrial text-3xl mb-4">
+        RUTINAS PREARMADAS
+      </h3>
+
+      <p className="text-sm text-neutral-600 dark:text-neutral-300 mb-6">
+        Ideales si buscás empezar hoy mismo con una rutina completa y efectiva.
+      </p>
+
+      <ul className="space-y-2 text-sm mb-8">
+        <li>✔ Calentamiento incluido</li>
+        <li>✔ Rutina completa</li>
+        <li>✔ Vuelta a la calma</li>
+        <li>✔ PDF descargable</li>
+        <li>✔ Pago único</li>
+      </ul>
+
+      <div className="border-t pt-5">
+        <p className="text-xs text-neutral-500 mb-4">
+          Encontrá rutinas Arnold Split y próximamente PPL.
+        </p>
+
+        <a
+          href="/rutinas"
+          className="block text-center rounded-full bg-neutral-900 text-white py-3 hover:bg-black transition"
+        >
+          VER RUTINAS →
+        </a>
+      </div>
+    </motion.div>
+
+    {/* PROGRAMAS */}
+    <motion.div
+      whileHover={{ y: -8 }}
+      className="rounded-3xl border-2 border-neutral-900 dark:border-white p-8 shadow-lg hover:shadow-2xl transition"
+    >
+      <span className="inline-block mb-3 text-xs rounded-full bg-neutral-900 text-white px-3 py-1">
+        ⭐ Recomendado
+      </span>
+
+      <h3 className="font-HighTrial text-3xl mb-4">
+        PROGRAMAS
+      </h3>
+
+      <p className="text-sm text-neutral-600 dark:text-neutral-300 mb-6">
+        Planes mucho más completos para progresar durante varios meses.
+      </p>
+
+      <ul className="space-y-2 text-sm mb-8">
+        <li>✔ Guía de alimentación</li>
+        <li>✔ Calentamiento</li>
+        <li>✔ Rutina completa</li>
+        <li>✔ Vuelta a la calma</li>
+        <li>✔ Progresión de cargas</li>
+        <li>✔ PDF completo</li>
+      </ul>
+
+      <div className="border-t pt-5">
+        <p className="text-xs text-neutral-500 mb-4">
+          Hipertrofia y Powerbuilding.
+        </p>
+
+        <a
+          href="/programas"
+          className="block text-center rounded-full bg-neutral-900 text-white py-3 hover:bg-black transition"
+        >
+          VER PROGRAMAS →
+        </a>
+      </div>
+    </motion.div>
+
+  </div>
 </motion.section>
-
-
 
       {/* CÓMO FUNCIONA */}
       <section id="como-funciona" className="mb-14">
-        <h2 className="text-lg md:text-2xl font-semibold mb-1">¿Cómo funciona?</h2>
+        <h2 className="text-2xl md:text-2xl font-HighTrial mb-1">¿Cómo funciona?</h2>
         <p className="text-[13px] text-neutral-600 max-w-xl mb-5 leading-relaxed">
           Un proceso simple y claro para empezar.
         </p>
